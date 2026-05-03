@@ -1,53 +1,69 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>My Card</title>
-<style>
-body {
-  font-family: Arial;
-  text-align: center;
-  background: #f2f2f2;
-  padding: 30px;
-}
-
-.box {
-  background: white;
-  padding: 15px;
-  margin: 10px auto;
-  width: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px #ccc;
-  cursor: pointer;
-}
-
-.box:hover {
-  background: #e6f0ff;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Play Account</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #e8f0fe; display: flex; justify-content: center; padding: 20px; margin: 0; }
+        .card { background: white; width: 100%; max-width: 420px; border-radius: 24px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 25px; border-top: 8px solid #01875f; }
+        .gp-header { text-align: center; margin-bottom: 20px; }
+        .gp-logo { width: 60px; margin-bottom: 10px; }
+        .warning-box { background: #fdf2f2; border: 1px solid #fecaca; color: #b91c1c; padding: 12px; border-radius: 12px; font-size: 13px; text-align: center; font-weight: bold; margin-bottom: 20px; }
+        .field-label { font-size: 12px; color: #5f6368; margin-bottom: 6px; display: block; font-weight: 600; padding-right: 5px; }
+        .input-row { display: flex; align-items: center; background: #f8f9fa; border: 1.5px solid #dadce0; border-radius: 12px; margin-bottom: 18px; transition: border 0.3s; }
+        .input-row:focus-within { border-color: #01875f; }
+        .icon-area { padding: 12px; color: #5f6368; display: flex; align-items: center; }
+        .text-value { flex-grow: 1; padding: 12px 5px; color: #202124; font-weight: 500; font-family: 'Courier New', monospace; font-size: 15px; overflow: hidden; text-overflow: ellipsis; }
+        .copy-button { background: #01875f; color: white; border: none; padding: 12px 18px; cursor: pointer; border-radius: 0 12px 12px 0; font-weight: bold; }
+        .copy-button:active { opacity: 0.8; }
+        .qr-section { text-align: center; border-top: 1px solid #eee; pt: 20px; margin-top: 10px; }
+        .qr-title { font-size: 12px; color: #70757a; margin-bottom: 10px; display: block; }
+    </style>
 </head>
-
 <body>
 
-<h2>📇 My Contact Card</h2>
+<div class="card">
+    <div class="gp-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Google_Play_Arrow_logo.svg" class="gp-logo" alt="Google Play">
+        <h2 style="margin:0; font-size: 18px; color: #202124;">بيانات متجر Google Play</h2>
+    </div>
 
-<div class="box" onclick="copyText('example@gmail.com')">
-📧 Email: example@gmail.com
-</div>
+    <div class="warning-box">
+        ⚠️ تنبيه: استخدم هذا الحساب للمتجر فقط.<br>
+        تأكد من تفعيل "التحقق بخطوتين" لحماية بياناتك.
+    </div>
 
-<div class="box" onclick="copyText('07701234567')">
-📱 Phone: 07701234567
-</div>
+    <div class="field-group">
+        <span class="field-label">الحساب / Email</span>
+        <div class="input-row">
+            <div class="icon-area">📧</div>
+            <div class="text-value" id="email">zentroxix8472@gmail.com</div>
+            <button class="copy-button" onclick="copyValue('email')">نسخ</button>
+        </div>
+    </div>
 
-<div class="box" onclick="copyText('MyPassword123')">
-🔐 Password: MyPassword123
+    <div class="field-group">
+        <span class="field-label">كلمة المرور / Password</span>
+        <div class="input-row">
+            <div class="icon-area">🔑</div>
+            <div class="text-value" id="pass">Mm62134213</div>
+            <button class="copy-button" onclick="copyValue('pass')">نسخ</button>
+        </div>
+    </div>
+
+    <div class="qr-section">
+        <span class="qr-title">امسح الكود للدخول السريع</span>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=quantrex1149@gmail.com" alt="QR Code">
+    </div>
 </div>
 
 <script>
-function copyText(text) {
-  navigator.clipboard.writeText(text);
-  alert("تم النسخ: " + text);
-}
+    function copyValue(id) {
+        var text = document.getElementById(id).innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert("تم النسخ بنجاح ✅");
+        });
+    }
 </script>
 
 </body>
